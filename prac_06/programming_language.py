@@ -1,6 +1,5 @@
 """
 Module: programming_language.py
-Estimated time to complete: 30 minutes
 """
 
 
