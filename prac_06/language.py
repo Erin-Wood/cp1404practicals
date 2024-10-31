@@ -17,5 +17,8 @@ print(visual_basic)
 
 languages_list = [python, ruby, visual_basic]
 
+# new code that was written on paper
+print("The dynamically typed languages are:")
 for language in languages_list:
-    print(language)
+    if language.is_dynamic():  # Use the is_dynamic method
+        print(language.name)  # Print the name of the dynamically typed language
