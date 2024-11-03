@@ -2,7 +2,7 @@
 Module: languages.py
 Estimated time to complete: 30 minutes
 Current time: 2pm
-Time to complete: 45 minutes
+Time to complete: 45 minutes (including programming_language.py)
 """
 
 from programming_language import ProgrammingLanguage
