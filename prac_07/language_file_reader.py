@@ -1,9 +1,3 @@
-"""
-CP1404/CP5632 Practical
-File and class example - opens/reads a file, stores in objects of custom class
-(contains multiple versions for demonstration: using csv and namedtuple)
-"""
-
 import csv
 from collections import namedtuple
 
@@ -23,7 +17,7 @@ def main():
         reflection = parts[2] == "Yes"
         pointer_arithmetic = parts[3] == "Yes"
 
-        language = ProgrammingLanguage(parts[0], parts[1], reflection, pointer_arithmetic, int(parts[4]))
+        language = ProgrammingLanguage(parts[0], parts[1], reflection, pointer_arithmetic)
 
         languages.append(language)
 
@@ -54,7 +48,7 @@ def using_namedtuple():
     file_field_names = in_file.readline().strip().split(',')
     print(file_field_names)
     Language = namedtuple('Language', 'name, typing, reflection, pointer_arithmetic, year')
-    reader = csv.reader(in_file)  # use default dialect, Excel
+    reader = csv.reader(in_file)
 
     for row in reader:
         language = Language._make(row)
