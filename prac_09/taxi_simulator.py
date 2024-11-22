@@ -13,8 +13,8 @@ def main():
         SilverServiceTaxi("Hummer", 200, 4)
     ]
 
-    total_bill = 0  # Initialize the total bill
-    current_taxi = None  # No taxi selected at the start
+    total_bill = 0
+    current_taxi = None
 
     while True:
         print("\nMenu:")
@@ -63,8 +63,8 @@ def drive_taxi(taxi):
     """Drive the selected taxi and calculate the trip cost."""
     try:
         distance = int(input(f"How far would you like to drive the {taxi.name}? "))
-        taxi.start_fare()  # Start a new fare
-        taxi.drive(distance)  # Drive the taxi
+        taxi.start_fare()
+        taxi.drive(distance)
         trip_cost = taxi.get_fare()
         print(f"Your trip cost: ${trip_cost:.2f}")
         return trip_cost
