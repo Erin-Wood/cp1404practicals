@@ -1,0 +1,26 @@
+BoxLayout:
+    orientation: 'vertical'
+
+    BoxLayout:
+        orientation: 'horizontal'  # Widgets will be arranged left-to-right
+        TextInput:
+            id: input_number
+            text: '7'
+            font_size: 48
+            multiline: False
+        Button:
+            text: 'Square'
+            # the following line specifies the function in the app class to call when the button is pressed
+            on_press: app.handle_calculate(input_number.text)
+        Label:
+            id: output_label
+            font_size: 48
+            color: (1, 0, 1, 1)  # Pink color in RGBA (Red, Green, Blue, Alpha)
+
+    BoxLayout:
+        orientation: 'horizontal'  # Single label at the bottom
+        Label:
+            text: "Enter a number and press 'Square'"
+            font_size: 24
+            size_hint_y: None
+            height: self.texture_size[1]
