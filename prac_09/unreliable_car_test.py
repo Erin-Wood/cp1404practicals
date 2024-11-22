@@ -1,23 +1,23 @@
-from unreliable_car import UnreliableCar
+from prac_09.unreliable_car import UnreliableCar
 
 
 def main():
-    car1 = UnreliableCar("Almost Always Reliable", 100, 90)
-    car2 = UnreliableCar("Somewhat Reliable", 100, 50)
-    car3 = UnreliableCar("Unreliable", 100, 10)
+    """Test some UnreliableCars."""
 
-    print(f"Attempting to drive 40 km with '{car1.name}'")
-    print(f"Distance driven: {car1.drive(40)} km")
-    print(car1)
+    good_car = UnreliableCar("Mostly Good", 100, 90)
+    bad_car = UnreliableCar("Dodgy", 100, 9)
 
-    print(f"\nAttempting to drive 40 km with '{car2.name}'")
-    print(f"Distance driven: {car2.drive(40)} km")
-    print(car2)
+    print("Testing the cars over several attempts...\n")
+    for distance in range(1, 12):  # Loop through distances from 1 to 11 km
+        print(f"Trying to drive {distance} km:")
+        good_distance = good_car.drive(distance)
+        bad_distance = bad_car.drive(distance)
+        print(f"{good_car.name} drove {good_distance} km")
+        print(f"{bad_car.name} drove {bad_distance} km\n")
 
-    print(f"\nAttempting to drive 40 km with '{car3.name}'")
-    print(f"Distance driven: {car3.drive(40)} km")
-    print(car3)
+    print("Final states of the cars:")
+    print(good_car)
+    print(bad_car)
 
 
-if __name__ == "__main__":
-    main()
+main()
