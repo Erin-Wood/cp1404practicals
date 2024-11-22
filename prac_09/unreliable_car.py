@@ -1,4 +1,4 @@
-import random
+from random import randint
 from car import Car
 
 
@@ -12,6 +12,8 @@ class UnreliableCar(Car):
 
     def drive(self, distance):
         """Drive the car if a random number is within the car's reliability."""
-        if random.uniform(0, 100) < self.reliability:
-            return super().drive(distance)
-        return 0
+        random_number = randint(1, 100)
+        if random_number >= self.reliability:
+            distance = 0
+        distance_driven = super().drive(distance)
+        return distance_driven
