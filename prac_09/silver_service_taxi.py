@@ -1,5 +1,6 @@
 from taxi import Taxi
 
+
 class SilverServiceTaxi(Taxi):
     """Specialised version of a Taxi that includes fanciness and flagfall."""
 
