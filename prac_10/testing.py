@@ -64,7 +64,7 @@ def phrase_to_sentence(phrase):
     sentence = phrase[0].upper() + phrase[1:]
     return sentence
 
-
+Add assertions to test Car class initialization for odometer and fuel.
 if __name__ == "__main__":
     run_tests()
     doctest.testmod()
