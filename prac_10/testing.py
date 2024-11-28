@@ -12,7 +12,7 @@ def repeat_string(s, n):
     result = ""
     for i in range(n):
         result += s
-        if i < n - 1:  # Add a space only between words
+        if i < n - 1:
             result += " "
     return result
 
