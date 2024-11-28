@@ -9,7 +9,12 @@ from prac_06.car import Car
 
 def repeat_string(s, n):
     """Repeat string s, n times, with spaces in between."""
-    return " ".join([s] * n)
+    result = ""
+    for i in range(n):
+        result += s
+        if i < n - 1:  # Add a space only between words
+            result += " "
+    return result
 
 
 def is_long_word(word, length=5):
@@ -22,42 +27,44 @@ def is_long_word(word, length=5):
     >>> is_long_word("Python", 6)
     True
     """
-    return len(word) >= length
-
-
-def format_sentence(phrase):
-    """
-    Format a phrase to start with a capital and end with a single full stop.
-    >>> format_sentence('hello')
-    'Hello.'
-    >>> format_sentence('It is an ex parrot.')
-    'It is an ex parrot.'
-    >>> format_sentence('this is a test')
-    'This is a test.'
-    """
-    phrase = phrase.strip()  # Remove extra spaces
-    if not phrase.endswith('.'):
-        phrase += '.'
-    return phrase[0].upper() + phrase[1:]
+    if len(word) >= length:
+        return True
+    else:
+        return False
 
 
 def run_tests():
     """Run the tests on the functions."""
-    assert repeat_string("Python", 1) == "Python"
-    assert repeat_string("hi", 2) == "hi hi"
+    assert repeat_string("Python", 1) == "Python", "repeat_string failed on single repeat"
+    assert repeat_string("hi", 2) == "hi hi", "repeat_string failed on multiple repeats"
 
     car = Car()
-    assert car._odometer == 0, "Car does not set odometer correctly"
+    assert car._odometer == 0, "Car's odometer did not initialize to 0"
 
-    car_default_fuel = Car()  # Default fuel value
-    assert car_default_fuel.fuel == 0, "Car does not set default fuel correctly"
+    car_with_fuel = Car(fuel=10)
+    assert car_with_fuel.fuel == 10, "Car did not set fuel correctly when passed a value"
 
-    car_with_fuel = Car(fuel=10)  # Passed fuel value
-    assert car_with_fuel.fuel == 10, "Car does not set fuel correctly when passed"
+    car_default_fuel = Car()
+    assert car_default_fuel.fuel == 0, "Car did not set default fuel to 0"
+
+
+def phrase_to_sentence(phrase):
+    """
+    Format a phrase as a sentence, starting with a capital and ending with a .
+    >>> phrase_to_sentence('hello')
+    'Hello.'
+    >>> phrase_to_sentence('It is an ex parrot.')
+    'It is an ex parrot.'
+    >>> phrase_to_sentence('This subject rocks')
+    'This subject rocks.'
+    """
+    phrase = phrase.strip()
+    if not phrase.endswith("."):
+        phrase += "."
+    sentence = phrase[0].upper() + phrase[1:]
+    return sentence
 
 
 if __name__ == "__main__":
     run_tests()
-    import doctest
     doctest.testmod()
-
