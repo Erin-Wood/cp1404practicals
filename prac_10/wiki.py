@@ -6,25 +6,26 @@ def main():
     print("Enter a page title or search phrase to get details.")
     print("Leave it blank and press Enter to quit.\n")
 
-    search = input("Enter a page title or search phrase: ").strip()
+    search = input("Enter page title: ").strip()
+
     while search != "":
         try:
             page = wikipedia.page(search)
-            print("\nPage Title:", page.title)
-            print("Summary:\n", wikipedia.summary(search, sentences=2))
-            print("URL:", page.url)
+            print(f"\n{page.title}")
+            print(f"{wikipedia.summary(search, sentences=2)}")
+            print(page.url)
         except wikipedia.exceptions.DisambiguationError as e:
-            print("\nYour search resulted in multiple options. Here are some:")
-            print(", ".join(e.options[:5]))  # Show only the first 5 options
+            print("\nWe need a more specific title. Try one of the following, or a new search:")
+            print(e.options[:5])  # Show the first 5 options for clarity
         except wikipedia.exceptions.PageError:
-            print("\nSorry, no page was found with that title or search phrase.")
+            print("\nPage id", f'"{search}"', "does not match any pages. Try another id!")
         except Exception as e:
-            print("\nAn error occurred:", str(e))
+            print("\nAn unexpected error occurred:", str(e))
 
         print("\n---")
-        search = input("Enter a page title or search phrase: ").strip()
+        search = input("Enter page title: ").strip()
 
-    print("Goodbye!")
+    print("Thank you.")
 
 
 if __name__ == "__main__":
