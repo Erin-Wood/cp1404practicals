@@ -1,0 +1,35 @@
+<ConvertLayout>:
+    orientation: 'vertical'
+    padding: 20
+    spacing: 10
+
+    TextInput:
+        id: miles_input
+        text: "0"
+        multiline: False
+        font_size: 32
+        halign: 'center'
+        background_color: [1, 1, 1, 1]
+        foreground_color: [0, 0, 0, 1]
+        on_text: app.update_km_output(self.text)
+
+    BoxLayout:
+        orientation: 'horizontal'
+        spacing: 10
+
+        Button:
+            text: "Up"
+            font_size: 24
+            background_color: [0.3, 0.3, 0.3, 1]
+            on_press: app.increase_miles()
+
+        Button:
+            text: "Down"
+            font_size: 24
+            background_color: [0.3, 0.3, 0.3, 1]
+            on_press: app.decrease_miles()
+
+    Label:
+        text: app.km_output
+        font_size: 32
+        color: [1, 1, 0, 1]
